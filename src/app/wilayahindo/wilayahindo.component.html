@@ -1,0 +1,38 @@
+<form>
+    <div class="form-group">
+        <label for="provinsi">Pilih Provinsi</label>
+        <select name="provinsi" id="provinsi" [formControl]="provinsi">
+            <option value="-1"></option>
+            <option *ngFor="let provinsi of allProvinsi" value="{{provinsi.id}}">
+                {{provinsi.name}}
+            </option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="kabupaten">Pilih Kota/Kabupaten</label>
+        <select name="kabupaten" id="kabupaten" [formControl]="kabupaten">
+            <option value="-1"></option>
+            <option *ngFor="let kabupaten of allKabupaten" value="{{kabupaten.id}}">
+                {{kabupaten.name}}
+            </option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="kecamatan">Pilih Kecamatan</label>
+        <select name="kecamatan" id="kecamatan" [formControl]="kecamatan">
+            <option value="-1"></option>
+            <option *ngFor="let kecamatan of allKecamatan" value="{{kecamatan.id}}">
+                {{kecamatan.name}}
+            </option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="kelurahan">Pilih Kelurahan</label>
+        <select name="kelurahan" id="kelurahan" [formControl]="kelurahan">
+            <option value="-1"></option>
+            <option *ngFor="let kelurahan of allKelurahan" value="{{kelurahan.id}}">
+                {{kelurahan.name}}
+            </option>
+        </select>
+    </div>
+</form>

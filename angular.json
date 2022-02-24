@@ -71,7 +71,8 @@
               "browserTarget": "katalis-ng:build:production"
             },
             "development": {
-              "browserTarget": "katalis-ng:build:development"
+              "browserTarget": "katalis-ng:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

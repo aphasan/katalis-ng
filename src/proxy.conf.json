@@ -1,0 +1,7 @@
+{
+    "/api-wilayah-indonesia/api/*": {
+        "target": "http://www.emsifa.com",
+        "secure": false,
+        "changeOrigin": true
+    }
+}
