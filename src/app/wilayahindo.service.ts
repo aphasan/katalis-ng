@@ -12,40 +12,41 @@ import { Kelurahan } from './kelurahan';
 })
 export class WilayahindoService {
 
-  private allProvinsiUrl = '/api-wilayah-indonesia/api/provinces.json';
-  private allKabupatenUrl = '/api-wilayah-indonesia/api/regencies';
-  private allKecamatanUrl = '/api-wilayah-indonesia/api/districts';
-  private allKelurahanUrl = '/api-wilayah-indonesia/api/villages';
+  private static GET_PROVINSI_URL = '/api-wilayah-indonesia/api/provinces.json';
+  private static GET_KABUPATEN_URL = '/api-wilayah-indonesia/api/regencies';
+  private static GET_KECAMATAN_URL = '/api-wilayah-indonesia/api/districts';
+  private static GET_KELURAHAN_URL = '/api-wilayah-indonesia/api/villages';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { }  
 
   getAllProvinsi(): Observable<Provinsi[]> {
-    return this.http.get<Provinsi[]>(this.allProvinsiUrl)
-      .pipe(catchError(this.handleError<Provinsi[]>(this.allProvinsiUrl, [])));
+    return this.get<Provinsi>(WilayahindoService.GET_PROVINSI_URL);
   }
 
   getAllKabupaten(provinceId: string): Observable<Kabupaten[]> {
-    const url = `${this.allKabupatenUrl}/${provinceId}.json`
-    return this.http.get<Kabupaten[]>(url)
-      .pipe(catchError(this.handleError<Kabupaten[]>(url, [])));
+    const url = `${WilayahindoService.GET_KABUPATEN_URL}/${provinceId}.json`;
+    return this.get<Kabupaten>(url);
   }
 
   getAllKecamatan(kabupatenId: string): Observable<Kecamatan[]> {
-    const url = `${this.allKecamatanUrl}/${kabupatenId}.json`
-    return this.http.get<Kecamatan[]>(url)
-      .pipe(catchError(this.handleError<Kecamatan[]>(url, [])));
+    const url = `${WilayahindoService.GET_KECAMATAN_URL}/${kabupatenId}.json`;
+    return this.get<Kecamatan>(url);
   }
 
   getAllKelurahan(kecamatanId: string): Observable<Kelurahan[]> {
-    const url = `${this.allKelurahanUrl}/${kecamatanId}.json`
-    return this.http.get<Kelurahan[]>(url)
-      .pipe(catchError(this.handleError<Kelurahan[]>(url, [])));
+    const url = `${WilayahindoService.GET_KELURAHAN_URL}/${kecamatanId}.json`;
+    return this.get<Kelurahan>(url);
+  }
+
+  private get<T>(url: string): Observable<T[]> {
+    return this.http.get<T[]>(url)
+      .pipe(catchError(this.handleError<T[]>(url, [])));
   }
 
   private handleError<T>(url: string, result: T) {
     return (error: any): Observable<T> => {
       console.error(url)
-      return of(result as T)
+      return of(result as T);
     };
   }
 

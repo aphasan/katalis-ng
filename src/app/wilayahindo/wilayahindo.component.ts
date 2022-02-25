@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { Kabupaten } from '../kabupaten';
 import { Kecamatan } from '../kecamatan';
 import { Kelurahan } from '../kelurahan';
@@ -25,8 +25,7 @@ export class WilayahindoComponent implements OnInit {
   kelurahan = new FormControl('');
 
   constructor(
-    private wilayahIndoService: WilayahindoService,
-    private builder: FormBuilder
+    private wilayahIndoService: WilayahindoService
   ) { }
 
   ngOnInit(): void {
